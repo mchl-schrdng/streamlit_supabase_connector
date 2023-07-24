@@ -9,7 +9,7 @@ def main():
     conn = st.experimental_connection("supabase_conn", type=SupabaseConnection)
 
     # Dropdown to select a table
-    tables = ["crypto_analysis", "table2", "table3"]  # Replace with your actual table names
+    tables = ["crypto_analysis", "customers", "table3"]  # Replace with your actual table names
     selected_table = st.selectbox("Select a table:", tables)
 
     # Button to fetch data
