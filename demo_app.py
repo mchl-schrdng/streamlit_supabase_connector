@@ -8,7 +8,9 @@ def main():
 
     # Sidebar content
     st.sidebar.header("Supabase + Streamlit")
-    st.sidebar.text("This app demonstrates the use of Streamlit's ExperimentalBaseConnection to create a connection with Supabase.")
+    st.sidebar.text("This app demonstrates the use of Streamlit's")
+    st.sidebar.text("ExperimentalBaseConnection to create a connection")
+    st.sidebar.text("with Supabase.")
 
     # Initialize our custom Supabase connection
     conn = st.experimental_connection("supabase_conn", type=SupabaseConnection)
