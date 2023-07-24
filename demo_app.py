@@ -3,9 +3,12 @@ import polars as pl
 from src.supabase_connector import SupabaseConnection
 
 def main():
-    # Display the logo at the top
-    st.sidebar.image("supabase-logo.png", width=100, use_column_width=False)
-    st.sidebar.image("streamlit-logo.png", width=100, use_column_width=False)
+    # Create two columns for the logos
+    col1, col2 = st.sidebar.beta_columns(2)
+    
+    # Display the logos in the respective columns
+    col1.image("supabase-logo.png", width=100)
+    col2.image("streamlit-logo.png", width=100)
 
     # Sidebar content
     st.sidebar.header("Supabase + Streamlit")
