@@ -9,7 +9,7 @@ def main():
     conn = st.experimental_connection("supabase_conn", type=SupabaseConnection)
 
     # Dropdown to select a table
-    tables = ["crypto_analysis", "table2", "table3", "customers"]
+    tables = ["crypto_analysis", "customers"]
     selected_table = st.selectbox("Select a table:", tables)
 
     # If the 'customers' table is selected, show UI for inserting data
