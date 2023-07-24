@@ -1,6 +1,5 @@
-<img src="./supabase-logo.png" alt="Supabase Logo" width="100"/> <img src="./streamlit-logo.png" alt="Streamlit Logo" width="100"/>
-
 # Streamlit + Supabase Integration
+<img src="./supabase-logo.png" alt="Supabase Logo" width="100"/> <img src="./streamlit-logo.png" alt="Streamlit Logo" width="100"/>
 
 This repository demonstrates the integration of Streamlit with Supabase using Streamlit's `ExperimentalBaseConnection`. The app allows users to interact with tables in Supabase, fetch data, and insert new records.
 
