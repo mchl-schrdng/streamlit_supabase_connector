@@ -25,8 +25,8 @@ def main():
             else:
                 st.warning("Please fill in both fields before inserting.")
 
-    # Button to fetch data
-    elif st.button("Fetch Data"):
+    # Button to fetch data (available for all tables)
+    if st.button("Fetch Data from Selected Table"):
         data = conn.fetch_data(selected_table)
         if data:
             df = pl.DataFrame(data)
