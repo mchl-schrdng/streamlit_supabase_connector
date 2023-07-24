@@ -26,13 +26,13 @@ This repository demonstrates the integration of Streamlit with Supabase using St
 git clone https://github.com/your-github-username/your-repo-name.git
 ```
 
-2. ### Navigate to the project directory:
+2. **Navigate to the project directory**:
 
 ```bash
 cd your-repo-name
 ```
 
-3. ### Install the required packages:
+3. **Install the required packages**:
 
 ```bash
 pip install -r requirements.txt
