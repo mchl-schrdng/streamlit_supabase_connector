@@ -1,5 +1,5 @@
 import streamlit as st
-from supabase_connector import SupabaseConnection  # Assuming the class is in supabase_connector.py
+from src.supabase_connector import SupabaseConnection  # Assuming the class is in supabase_connector.py
 
 def main():
     st.title("Streamlit App with Supabase")
