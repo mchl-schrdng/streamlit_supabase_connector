@@ -12,22 +12,19 @@ def main():
     tables = ["crypto_analysis", "customers"]
     selected_table = st.selectbox("Select a table:", tables)
 
-    # Custom Query Parameters
-    st.subheader("Custom Query Parameters")
-    limit = st.number_input("Limit (number of rows)", min_value=1, max_value=1000, value=10)
-    
-    # Initialize filter_column and filter_value to None
-    filter_column = None
-    filter_value = None
-    
-    # Assuming you want to filter the 'customers' table by 'first_name' for demonstration
-    if selected_table == "customers":
-        filter_column = st.selectbox("Filter Column", ["first_name", "last_name"])
-        filter_value = st.text_input(f"Value for {filter_column}")
+    # Multi-select for columns
+    if selected_table == "crypto_analysis":
+        available_columns = ["column1", "column2", "column3"]  # Replace with actual column names
+    elif selected_table == "customers":
+        available_columns = ["first_name", "last_name"]
+    selected_columns = st.multiselect("Select columns:", available_columns, default=available_columns)
+
+    # Convert selected columns to a comma-separated string
+    columns_str = ",".join(selected_columns)
 
     # Fetch Data Button
     if st.button("Fetch Data from Selected Table"):
-        data = conn.fetch_data(selected_table, limit=limit, filter_column=filter_column, filter_value=filter_value)
+        data = conn.fetch_data(selected_table, selected_columns=columns_str)
         if data:
             df = pl.DataFrame(data)
             st.write(df)

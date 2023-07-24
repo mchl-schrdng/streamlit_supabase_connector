@@ -7,14 +7,10 @@ class SupabaseConnection(ExperimentalBaseConnection):
         api_key = st.secrets["SUPABASE"]["API_KEY"]
         self._instance = create_client(url, api_key)
 
-    def fetch_data(self, table_name, limit=10, filter_column=None, filter_value=None):
-        query = self._instance.table(table_name).select("*").limit(limit)
-        
-        if filter_column and filter_value:
-            query = query.filter(filter_column, "eq", filter_value)
-        
-        response = query.execute()
-        return response.data
+    def fetch_data(self, table_name, selected_columns="*"):
+    query = self._instance.table(table_name).select(selected_columns)
+    response = query.execute()
+    return response.data
 
     def insert_data(self, table_name, data):
         response = self._instance.table(table_name).insert(data).execute()
