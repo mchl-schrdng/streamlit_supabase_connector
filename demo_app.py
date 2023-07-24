@@ -4,7 +4,7 @@ from src.supabase_connector import SupabaseConnection
 
 def main():
     # Create two columns for the logos
-    col1, col2 = st.sidebar.beta_columns(2)
+    col1, col2 = st.sidebar.columns(2)
     
     # Display the logos in the respective columns
     col1.image("supabase-logo.png", width=100)
