@@ -16,6 +16,10 @@ def main():
     st.subheader("Custom Query Parameters")
     limit = st.number_input("Limit (number of rows)", min_value=1, max_value=1000, value=10)
     
+    # Initialize filter_column and filter_value to None
+    filter_column = None
+    filter_value = None
+    
     # Assuming you want to filter the 'customers' table by 'first_name' for demonstration
     if selected_table == "customers":
         filter_column = st.selectbox("Filter Column", ["first_name", "last_name"])
