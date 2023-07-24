@@ -1,17 +1,14 @@
-import streamlit as st
 from streamlit.connections import ExperimentalBaseConnection
 from supabase import create_client
 
 class SupabaseConnection(ExperimentalBaseConnection):
     def _connect(self, **kwargs):
-        # Fetch secrets from st.secrets
-        url = st.secrets["SUPABASE"]["SUPABASE_URL"]
-        api_key = st.secrets["SUPABASE"]["SUPABASE_API_KEY"]
-        
+        url = st.secrets["SUPABASE"]["URL"]
+        api_key = st.secrets["SUPABASE"]["API_KEY"]
         return create_client(url, api_key)
 
-    def fetch_data(self, table_name, columns="*"):
-        response = self._instance.table(table_name).select(columns).execute()
+    def fetch_data(self, table_name):
+        response = self._instance.table(table_name).select("*").execute()
         return response.data
 
     def insert_data(self, table_name, values):
