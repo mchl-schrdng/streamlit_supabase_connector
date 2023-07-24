@@ -16,4 +16,5 @@ The app allows users to interact with tables in Supabase, fetch data, and insert
 
 - Python 3.7 or higher
 - Streamlit
+- Polars
 - Supabase account with tables set up
