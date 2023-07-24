@@ -20,6 +20,7 @@ def main():
 
         if st.button("Insert Data"):
             if first_name and last_name:
+                # Insert data into the 'customers' table
                 inserted_data = conn.insert_data("customers", {"first_name": first_name, "last_name": last_name})
                 st.success("Data inserted successfully!")
             else:
