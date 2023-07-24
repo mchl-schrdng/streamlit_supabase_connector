@@ -1,4 +1,5 @@
 import streamlit as st
+import polars as pl
 from src.supabase_connector import SupabaseConnection  # Assuming the class is in supabase_connector.py
 
 def main():
@@ -14,7 +15,9 @@ def main():
     # Button to fetch data
     if st.button("Fetch Data"):
         data = conn.fetch_data(selected_table)
-        st.write(data)
+        if data:
+            df = pl.DataFrame(data)
+            st.write(df)
 
     # For demonstration: Insert sample data
     if st.button("Insert Sample Data"):
