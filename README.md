@@ -1,5 +1,4 @@
-<img src="./supabase-logo.png" alt="Supabase Logo" width="200"/>
-<img src="./streamlit-logo.png" alt="Streamlit Logo" width="200"/>
+<img src="./supabase-logo.png" alt="Supabase Logo" width="100"/> <img src="./streamlit-logo.png" alt="Streamlit Logo" width="100"/>
 
 # Streamlit + Supabase Integration
 
