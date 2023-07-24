@@ -2,7 +2,7 @@
 
 This repository demonstrates the integration of Streamlit with Supabase using Streamlit's `ExperimentalBaseConnection`. The app allows users to interact with tables in Supabase, fetch data, and insert new records.
 
-![Supabase Logo](./supabase-logo.png)
+![Supabase Logo](./supabase-logo.png) ![Streamlit Logo](./streamlit-logo.png)
 
 ## 🌟 Features
 
