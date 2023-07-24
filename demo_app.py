@@ -12,22 +12,18 @@ def main():
     tables = ["crypto_analysis", "customers"]
     selected_table = st.selectbox("Select a table:", tables)
 
-    # If the 'customers' table is selected, show UI for inserting data
+    # Custom Query Parameters
+    st.subheader("Custom Query Parameters")
+    limit = st.number_input("Limit (number of rows)", min_value=1, max_value=1000, value=10)
+    
+    # Assuming you want to filter the 'customers' table by 'first_name' for demonstration
     if selected_table == "customers":
-        st.subheader("Insert Data into Customers Table")
-        first_name = st.text_input("First Name")
-        last_name = st.text_input("Last Name")
+        filter_column = st.selectbox("Filter Column", ["first_name", "last_name"])
+        filter_value = st.text_input(f"Value for {filter_column}")
 
-        if st.button("Insert Data"):
-            if first_name and last_name:
-                inserted_data = conn.insert_data("customers", {"first_name": first_name, "last_name": last_name})
-                st.success("Data inserted successfully!")
-            else:
-                st.warning("Please fill in both fields before inserting.")
-
-    # Button to fetch data (available for all tables)
+    # Fetch Data Button
     if st.button("Fetch Data from Selected Table"):
-        data = conn.fetch_data(selected_table)
+        data = conn.fetch_data(selected_table, limit=limit, filter_column=filter_column, filter_value=filter_value)
         if data:
             df = pl.DataFrame(data)
             st.write(df)
