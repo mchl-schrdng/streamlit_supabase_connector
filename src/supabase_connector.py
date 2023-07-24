@@ -5,8 +5,8 @@ from supabase import create_client
 class SupabaseConnection(ExperimentalBaseConnection):
     def _connect(self, **kwargs):
         # Fetch secrets from st.secrets
-        url = st.secrets["SUPABASE"]["URL"]
-        api_key = st.secrets["SUPABASE"]["API_KEY"]
+        url = st.secrets["SUPABASE"]["SUPABASE_URL"]
+        api_key = st.secrets["SUPABASE"]["SUPABASE_API_KEY"]
         
         return create_client(url, api_key)
 
