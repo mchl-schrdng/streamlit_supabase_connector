@@ -8,16 +8,16 @@ def main():
 
     # Sidebar content
     st.sidebar.header("Supabase + Streamlit")
-    st.sidebar.text("This app demonstrates the use of Streamlit's")
-    st.sidebar.text("ExperimentalBaseConnection to create a connection")
-    st.sidebar.text("with Supabase.")
 
     # Initialize our custom Supabase connection
     conn = st.experimental_connection("supabase_conn", type=SupabaseConnection)
 
-    # Dropdown to select a table in the main area
+    # Dropdown to select a table in the sidebar
     tables = ["crypto_analysis", "customers"]
-    selected_table = st.selectbox("Select a table:", tables)
+    selected_table = st.sidebar.selectbox("Select a table:", tables)
+
+    # Main content area
+    st.header(f"Working with table: {selected_table}")
 
     # If the 'customers' table is selected, show UI for inserting data
     if selected_table == "customers":
@@ -33,7 +33,7 @@ def main():
                 st.warning("Please fill in both fields before inserting.")
 
     # Button to fetch data (available for all tables)
-    if st.button("Fetch Data from Selected Table"):
+    if st.button("Fetch Data"):
         data = conn.fetch_data(selected_table)
         if data:
             df = pl.DataFrame(data)
