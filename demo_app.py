@@ -1,6 +1,6 @@
 import streamlit as st
 import polars as pl
-from src.supabase_connector import SupabaseConnection  # Assuming the class is in supabase_connector.py
+from src.supabase_connector import SupabaseConnection
 
 def main():
     st.title("Streamlit App with Supabase")
@@ -9,21 +9,28 @@ def main():
     conn = st.experimental_connection("supabase_conn", type=SupabaseConnection)
 
     # Dropdown to select a table
-    tables = ["crypto_analysis", "customers", "table3"]  # Replace with your actual table names
+    tables = ["crypto_analysis", "table2", "table3", "customers"]
     selected_table = st.selectbox("Select a table:", tables)
 
+    # If the 'customers' table is selected, show UI for inserting data
+    if selected_table == "customers":
+        st.subheader("Insert Data into Customers Table")
+        first_name = st.text_input("First Name")
+        last_name = st.text_input("Last Name")
+
+        if st.button("Insert Data"):
+            if first_name and last_name:
+                inserted_data = conn.insert_data("customers", {"first_name": first_name, "last_name": last_name})
+                st.success("Data inserted successfully!")
+            else:
+                st.warning("Please fill in both fields before inserting.")
+
     # Button to fetch data
-    if st.button("Fetch Data"):
+    elif st.button("Fetch Data"):
         data = conn.fetch_data(selected_table)
         if data:
             df = pl.DataFrame(data)
             st.write(df)
-
-    # For demonstration: Insert sample data
-    if st.button("Insert Sample Data"):
-        sample_data = {"col1": "value1", "col2": "value2", "col3": "value3"}  # Adjust as per your table schema
-        inserted_data = conn.insert_data(selected_table, sample_data)
-        st.write("Inserted Data:", inserted_data)
 
 if __name__ == "__main__":
     main()
