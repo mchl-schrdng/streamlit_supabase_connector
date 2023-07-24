@@ -4,8 +4,8 @@ from src.supabase_connector import SupabaseConnection
 
 def main():
     # Display the logo at the top
-    st.sidebar.image("supabase-logo.png", use_column_width=False)
-    st.sidebar.image("streamlit-logo.png", use_column_width=False)
+    st.sidebar.image("supabase-logo.png", width=100, use_column_width=False)
+    st.sidebar.image("streamlit-logo.png", width=100, use_column_width=False)
 
     # Sidebar content
     st.sidebar.header("Supabase + Streamlit")
