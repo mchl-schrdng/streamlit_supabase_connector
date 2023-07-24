@@ -7,8 +7,8 @@ def main():
     col1, col2 = st.sidebar.columns(2)
     
     # Display the logos in the respective columns
-    col1.image("supabase-logo.png", width=100)
-    col2.image("streamlit-logo.png", width=100)
+    col1.image("streamlit-logo.png", width=100)
+    col2.image("supabase-logo.png", width=100)
 
     # Sidebar content
     st.sidebar.header("Supabase + Streamlit")
