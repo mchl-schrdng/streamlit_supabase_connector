@@ -3,6 +3,14 @@ from supabase import create_client
 import streamlit as st
 
 class SupabaseConnection(ExperimentalBaseConnection):
+    @property
+    def _instance(self):
+        return getattr(self, "_supabase_client", None)
+
+    @_instance.setter
+    def _instance(self, value):
+        self._supabase_client = value
+
     def _connect(self, **kwargs):
         # Initialize the Supabase client using secrets.
         url = st.secrets["SUPABASE"]["URL"]
