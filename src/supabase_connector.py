@@ -1,5 +1,6 @@
 from streamlit.connections import ExperimentalBaseConnection
 from supabase import create_client
+import streamlit as st
 
 class SupabaseConnection(ExperimentalBaseConnection):
     def _connect(self, **kwargs):
